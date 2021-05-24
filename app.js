@@ -19,4 +19,4 @@ app.use("/api/game", gameRouter);
 //   console.log(`Server is running on PORT: ${3000}`);
 // });
 
-module.exports = router;
+module.exports = app;
