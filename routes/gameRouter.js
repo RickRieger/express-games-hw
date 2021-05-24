@@ -28,9 +28,9 @@ router.get("/get-game-by-id/:id", function (req, res) {
     }
   });
   if (!foundGame) {
-    res.json({ message: "The game with the id does not exist, please check id" });
+    res.status(404).json({ message: "The game with the id does not exist, please check id" });
   } else {
-    res.json({ foundGame });
+    res.json({ payload: foundGame });
   }
 });
 
@@ -99,11 +99,11 @@ router.put("/update-game/:id", function (req, res) {
   if(!canUpdate){
     res.json({ message: "game not found, cannot update"});
   }
-  if (req.body.updatedName !== undefined && req.body.updatedName !== "" ) {
-    foundGame.game = req.body.updatedName;
+  if (req.body.game !== undefined && req.body.game !== "" ) {
+    foundGame.game = req.body.game;
   } 
-  if (req.body.updatedDescription !== undefined && req.body.updatedDescription !== ""){
-    foundGame.description = req.body.updatedDescription;
+  if (req.body.description !== undefined && req.body.description !== ""){
+    foundGame.description = req.body.description;
   }
   res.json({ games });
 });
